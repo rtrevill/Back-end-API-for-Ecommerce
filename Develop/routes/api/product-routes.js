@@ -118,7 +118,29 @@ router.delete('/:id', async (req, res) => {
     where : {
       id: req.params.id,
     },
-  });
+    attributes: {
+      include: [
+         await ProductTag.destroy({
+          where: {
+            product_id: req.params.id,
+          }
+        })
+      
+      ]
+    }
+  })
+  // const tagData = await ProductTag.destroy({
+  //   where: {
+  //     product_id: req.params.id,
+  //   }
+  // })
+  // .then(() => {
+  //   let param = req.params.id;
+  //   console.log(param);
+  //   sequelize.literal(
+  //     '(DELETE * from product_tag WHERE product_id = ${param))'
+  //   )
+  // });
   if (!productData){
     res.status(404).json({message: 'No product with that ID can be found'});
     return;
