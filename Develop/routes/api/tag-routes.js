@@ -12,8 +12,6 @@ router.get('/', async (req, res) => {
   }catch(err){
     res.status(500).json(err);
   }
-  // find all tags
-  // be sure to include its associated Product data
 });
 
 router.get('/:id', async (req, res) => {
@@ -25,8 +23,6 @@ router.get('/:id', async (req, res) => {
   }catch(err){
     res.status(500).json(err);
   }
-  // find a single tag by its `id`
-  // be sure to include its associated Product data
 });
 
 router.post('/', async (req, res) => {
@@ -36,7 +32,6 @@ router.post('/', async (req, res) => {
   }catch(err){
     res.status(500).json(err)
   }
-  // create a new tag
 });
 
 router.put('/:id', async (req, res) => {
@@ -55,7 +50,6 @@ router.put('/:id', async (req, res) => {
   }catch(err){
     res.status(500).json(err);
   }
-  // update a tag's name by its `id` value
 });
 
 router.delete('/:id', async (req, res) => {
@@ -65,15 +59,6 @@ router.delete('/:id', async (req, res) => {
       where: {
         id: req.params.id
       },
-      attributes: {
-        include: [
-          await ProductTag.destroy({
-            where: {
-              tag_id: req.params.id,
-            }
-          })
-        ]
-      }
     })
     if (!tagData){
       res.status(404).json({message: 'No Tag with that ID found'});
@@ -83,7 +68,6 @@ router.delete('/:id', async (req, res) => {
   }catch(err){
     res.status(500).json(err);
   }
-  // delete on tag by its `id` value
 });
 
 module.exports = router;
