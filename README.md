@@ -1,10 +1,14 @@
 # Back-end API for Ecommerce
 
+### Link to GitHub repository: https://github.com/rtrevill/Back-end-API-for-Ecommerce
+
+### Link to walkthrough video: https://drive.google.com/file/d/12hlyZZcYELu8DS8zoNKGwh5ONUG128bL/view
+
 ## The Task
 
 The task that this app address is to produce a back-end only app that receives requests through a server.
 
-The requests, which are to simulate interactions with a front end user are to access, and modify data being stored in a database by using Node.js, mySql2 and Sequelize.
+The requests, which are to simulate interactions with a front end user are to access, create, delete and modify data being stored in a database by using Node.js, mySql2 and Sequelize.
 
 
 ## User Story
@@ -149,6 +153,8 @@ Associations between these models have been made as follows:
 
 ## To use the app
 
-1. Through the /db folder run mysql and run    "source schema.sql". Exit MySQL.
-2. Operating from the root folder, run    "node seeds/index.js"
+1. Through the /db folder run mysql and run "source schema.sql". Exit MySQL.
+2. Operating from the root folder, run "node seeds/index.js", or simply run "npm run seed"
 3. Run "npm start", or "node server.js"
+4. Use insomnia or Postman to simulate requests being sent through.
+ENJOY
