@@ -4,6 +4,8 @@ const Category = require('./Category');
 const Tag = require('./Tag');
 const ProductTag = require('./ProductTag');
 
+// Defining associations between models. These are reliant on primary keys and foreign keys to link the models, as specified below.
+
 // Products belongsTo Category
 Product.belongsTo(Category, {
   foreignKey: 'category_id',
@@ -15,6 +17,7 @@ Category.hasMany(Product, {
 });
 
 // Products belongToMany Tags (through ProductTag)
+// OnDelete: CASCADE will remove the association from the ProductTag model if a tag is deleted
 Product.belongsToMany(Tag, {
   through: ProductTag,
   foreignKey: 'product_id',
@@ -22,6 +25,7 @@ Product.belongsToMany(Tag, {
 });
 
 // Tags belongToMany Products (through ProductTag)
+// OnDelete: CASCADE will remove the association from the ProductTag model if a product is deleted
 Tag.belongsToMany(Product, { 
   through: ProductTag,
   foreignKey: 'tag_id',

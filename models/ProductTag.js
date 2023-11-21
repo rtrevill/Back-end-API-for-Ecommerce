@@ -1,10 +1,14 @@
+// Import the sequelize connection to our database
 const sequelize = require('../config/connection');
 
+// Import parts of the Sequelize library
 const { Model, DataTypes } = require('sequelize');
 
 
 class ProductTag extends Model {}
 
+// Define the fields and rules for the ProductTag model
+// This includes defining associations to the 'product' and 'tag' models
 ProductTag.init(
   {
     id: {

@@ -3,6 +3,8 @@ const { Tag, Product, ProductTag } = require('../../models');
 
 // The `/api/tags` endpoint
 
+
+// Returns as json, all the tags in the database, along with their associated products
 router.get('/', async (req, res) => {
   try{
     const tagData = await Tag.findAll({
@@ -14,6 +16,8 @@ router.get('/', async (req, res) => {
   }
 });
 
+
+// Returns an individual tags with it's associated product/s/
 router.get('/:id', async (req, res) => {
   try{
     const tagData = await Tag.findByPk(req.params.id, {
@@ -28,6 +32,7 @@ router.get('/:id', async (req, res) => {
   }
 });
 
+// Creates a new tag in the database from the user specified data.
 router.post('/', async (req, res) => {
   try{
     const tagData = await Tag.create(req.body)
@@ -37,6 +42,8 @@ router.post('/', async (req, res) => {
   }
 });
 
+
+// Modifies a single tag with the provided user data
 router.put('/:id', async (req, res) => {
   try{
     const tagbody = await Tag.findByPk(req.params.id);
@@ -55,6 +62,7 @@ router.put('/:id', async (req, res) => {
   }
 });
 
+// Deletes a single tag from the database
 router.delete('/:id', async (req, res) => {
   try{
     const tagData = await Tag.findByPk(req.params.id)

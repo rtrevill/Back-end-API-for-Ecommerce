@@ -2,6 +2,7 @@ const { Model, DataTypes } = require('sequelize');
 
 const sequelize = require('../config/connection.js');
 
+// Define the category model withdata types. Primary key is id.
 class Category extends Model {}
 
 Category.init(

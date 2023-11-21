@@ -3,7 +3,8 @@ const { Product, Category, Tag, ProductTag } = require('../../models');
 
 // The `/api/products` endpoint
 
-
+// return a json of all products in the database
+// along with any associated categories and products for each product.
 router.get('/', async (req, res) => {
   try {
     const productData = await Product.findAll({
@@ -15,7 +16,8 @@ router.get('/', async (req, res) => {
   }
 });
 
-
+// return a json of one specified product from the database
+// along with any associated categories and products for that product.
 router.get('/:id', async (req, res) => {
   try{
     const productData = await Product.findByPk(req.params.id, {
@@ -31,7 +33,8 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-
+// Creates a new product from the specified user data.
+// This also creates associations in ProductTag with any tags that have been specified.
 router.post('/', async (req, res) => {
   await Product.create(req.body)
     .then(async (product) => {
@@ -56,6 +59,9 @@ router.post('/', async (req, res) => {
 });
 
 
+// Modifies a specified product with the provided user data.
+// Also assesses if there are to be any changes to associations with tags in ProductTags
+// and then performs those modifications
 router.put('/:id', (req, res) => {
   Product.update(req.body, {
     where: {
@@ -98,6 +104,8 @@ router.put('/:id', (req, res) => {
     });
 });
 
+
+// Removes a specified product from the database
 router.delete('/:id', async (req, res) => {
   try{
   const productData = await Product.destroy({
